@@ -1,0 +1,96 @@
+// This Program is to demonstrate Operations Performed by an ATM Machine
+
+import java.util.*;
+
+public class ATM_Interface 
+{
+	  static String accountHolder  = "akshitha";
+	  static int userPin = 2000;
+	  static int enteredPin;
+	  static String enteredname;
+	  static char ans;
+	  static Scanner sc = new Scanner(System.in);
+	  static int withdraw(int balance,int amount)
+	  {
+	          return balance-amount;
+	  }
+	  static int deposit(int balance,int amount)
+	  {
+	      return balance+amount;
+	  }
+	  static void menu()
+	  {
+	      int ch,balance=10000,amount;
+	      char ans;
+	      do{
+	          System.out.println("Here are list of transactions you can perform:");
+	          System.out.println("\n 1.Withdraw");
+	          System.out.println("\n 2.Deposit");
+	          System.out.println("\n 3.Transfer");
+	          System.out.println("\n 4.BlanceEnquiry");
+	          System.out.println("\n 5.Exit");
+	          System.out.println("\nEnter your choice:");
+	          ch = sc.nextInt();
+	          switch(ch)
+	          {
+	              case 1 :  System.out.println("Please Enter amount:");
+	                      amount = sc.nextInt();
+	                      if (balance >= amount)
+	                          balance = withdraw(balance,amount);
+	                      else
+	                          System.out.println("You cannot make this transaction.");
+	                      System.out.println("balance amount : "+ balance);
+	                      break;
+	              case 3 : System.out.println("Enter amount to deposit:");
+	                      amount = sc.nextInt();
+	                      balance = deposit(balance,amount);
+	                      System.out.println("balance amount : "+ balance);
+	                      break;
+	              case 4 : System.out.println("Enter recipent's account number: ");
+	                       int transferAccountNo = sc.nextInt();
+	                       System.out.println("Enter transfer amount: ");
+	                       int transferAmount = sc.nextInt();
+	                       if(transferAmount>balance)
+	                          System.out.println("Insufficient Balance.");
+	                       else
+	                       {
+	                          balance = balance - transferAmount;
+	                          String x = "Your amount " + transferAmount + " is successfully transfered to " + transferAccountNo;
+	                          System.out.println(x);
+	                          System.out.println(balance);
+	                       }
+	                       break;
+	              case 5 :System.out.println("Your balance : "+ balance);
+	                      break;
+	              case 6 : System.exit(0);
+	          }   
+	          System.out.println("\ndo you want to continue?");
+	          ans = sc.next().charAt(0);
+	      }while(ans =='Y'|| ans =='y');
+	      System.out.println("Thank you!!");
+	      System.exit(0);    
+	  }
+	  public static void main(String args[])
+	  {
+	      int noOfAttempts =1;
+	      while(noOfAttempts <=3)
+	      {   
+	              System.out.println("\nEnter your username:");
+	              enteredname = sc.next();
+	              System.out.println("\nEnter your PIN:");
+	              enteredPin = sc.nextInt();
+	              if(userPin == enteredPin)
+	              {
+	                  System.out.println("\nWelcome to State Bank Of Inida ATM");
+	                  menu();
+	              }
+	              else
+	              {
+	                  System.out.println("Credentials entered are Invalid.Please try with correct username and userPin.\n");
+	                  if (noOfAttempts>3)
+	                      System.out.println("You have tried for 3 times already\n");
+	              }
+	          noOfAttempts++;
+	     } 
+  	 }
+}
