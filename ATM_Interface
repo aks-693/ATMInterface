@@ -41,12 +41,12 @@ public class ATM_Interface
 	                          System.out.println("You cannot make this transaction.");
 	                      System.out.println("balance amount : "+ balance);
 	                      break;
-	              case 3 : System.out.println("Enter amount to deposit:");
+	              case 2 : System.out.println("Enter amount to deposit:");
 	                      amount = sc.nextInt();
 	                      balance = deposit(balance,amount);
 	                      System.out.println("balance amount : "+ balance);
 	                      break;
-	              case 4 : System.out.println("Enter recipent's account number: ");
+	              case 3 : System.out.println("Enter recipent's account number: ");
 	                       int transferAccountNo = sc.nextInt();
 	                       System.out.println("Enter transfer amount: ");
 	                       int transferAmount = sc.nextInt();
@@ -60,9 +60,9 @@ public class ATM_Interface
 	                          System.out.println(balance);
 	                       }
 	                       break;
-	              case 5 :System.out.println("Your balance : "+ balance);
+	              case 4 :System.out.println("Your balance : "+ balance);
 	                      break;
-	              case 6 : System.exit(0);
+	              case 5 : System.exit(0);
 	          }   
 	          System.out.println("\ndo you want to continue?");
 	          ans = sc.next().charAt(0);
