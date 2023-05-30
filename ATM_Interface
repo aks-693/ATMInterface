@@ -10,6 +10,10 @@ public class ATM_Interface
 	  static String enteredname;
 	  static char ans;
 	  static Scanner sc = new Scanner(System.in);
+	  static void displayBalance(int balance) {
+		  System.out.println("Current Balance:"+balance);
+		  System.out.println("Minimum balance should be maintained");
+	  }
 	  static int withdraw(int balance,int amount)
 	  {
 	          return balance-amount;
@@ -33,18 +37,19 @@ public class ATM_Interface
 	          ch = sc.nextInt();
 	          switch(ch)
 	          {
-	              case 1 :  System.out.println("Please Enter amount:");
+	              case 1 :System.out.println("Writhdrawn Stauts"); 
+	            	  	  System.out.println("Please Enter amount:");
 	                      amount = sc.nextInt();
 	                      if (balance >= amount)
 	                          balance = withdraw(balance,amount);
 	                      else
 	                          System.out.println("You cannot make this transaction.");
-	                      System.out.println("balance amount : "+ balance);
+	                      displayBalance(balance);
 	                      break;
 	              case 2 : System.out.println("Enter amount to deposit:");
 	                      amount = sc.nextInt();
 	                      balance = deposit(balance,amount);
-	                      System.out.println("balance amount : "+ balance);
+	                      displayBalance(balance);
 	                      break;
 	              case 3 : System.out.println("Enter recipent's account number: ");
 	                       int transferAccountNo = sc.nextInt();
@@ -57,10 +62,10 @@ public class ATM_Interface
 	                          balance = balance - transferAmount;
 	                          String x = "Your amount " + transferAmount + " is successfully transfered to " + transferAccountNo;
 	                          System.out.println(x);
-	                          System.out.println(balance);
+	                          displayBalance(balance);
 	                       }
 	                       break;
-	              case 4 :System.out.println("Your balance : "+ balance);
+	              case 4 :displayBalance(balance);
 	                      break;
 	              case 5 : System.exit(0);
 	          }   
