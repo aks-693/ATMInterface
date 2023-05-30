@@ -26,18 +26,30 @@ public class ATM_Interface
 	  {
 	      int ch,balance=10000,amount;
 	      char ans;
+	      ArrayList<String> transactions = new ArrayList<>();
 	      do{
 	          System.out.println("Here are list of transactions you can perform:");
-	          System.out.println("\n 1.Withdraw");
-	          System.out.println("\n 2.Deposit");
-	          System.out.println("\n 3.Transfer");
-	          System.out.println("\n 4.BlanceEnquiry");
-	          System.out.println("\n 5.Exit");
+	          System.out.println("\n 1.Transaction History");
+	          System.out.println("\n 2.Withdraw");
+	          System.out.println("\n 3.Deposit");
+	          System.out.println("\n 4.Transfer");
+	          System.out.println("\n 5.BlanceEnquiry");
+	          System.out.println("\n 6.Exit");
 	          System.out.println("\nEnter your choice:");
 	          ch = sc.nextInt();
 	          switch(ch)
 	          {
-	              case 1 :System.out.println("Writhdrawn Stauts"); 
+	          		case 1 : if (transactions.size()==0)
+	          			System.out.println("Your Transaction History is empty");
+	          		else
+	          		{
+	          			System.out.println("Transaction History");
+	          			for(String transaction:transactions)
+                          System.out.println(transaction);
+	          		}
+	          		break;
+	      
+	              case 2 :System.out.println("Writhdrawn Stauts"); 
 	            	  	  System.out.println("Please Enter amount:");
 	                      amount = sc.nextInt();
 	                      if (balance >= amount)
@@ -46,12 +58,12 @@ public class ATM_Interface
 	                          System.out.println("You cannot make this transaction.");
 	                      displayBalance(balance);
 	                      break;
-	              case 2 : System.out.println("Enter amount to deposit:");
+	              case 3 : System.out.println("Enter amount to deposit:");
 	                      amount = sc.nextInt();
 	                      balance = deposit(balance,amount);
 	                      displayBalance(balance);
 	                      break;
-	              case 3 : System.out.println("Enter recipent's account number: ");
+	              case 4 : System.out.println("Enter recipent's account number: ");
 	                       int transferAccountNo = sc.nextInt();
 	                       System.out.println("Enter transfer amount: ");
 	                       int transferAmount = sc.nextInt();
@@ -65,9 +77,9 @@ public class ATM_Interface
 	                          displayBalance(balance);
 	                       }
 	                       break;
-	              case 4 :displayBalance(balance);
+	              case 5 :displayBalance(balance);
 	                      break;
-	              case 5 : System.exit(0);
+	              case 6 : System.exit(0);
 	          }   
 	          System.out.println("\ndo you want to continue?");
 	          ans = sc.next().charAt(0);
